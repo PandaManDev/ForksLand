@@ -44,16 +44,16 @@ button,input,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-de
 <section class="hero"><div class="eyebrow">Your next adventure starts here</div><h2>Find your place<br>in the forest.</h2><p>Explore, build, survive, and make your mark in Forks Land. Check the server status, catch up on community news, and get ready to join the adventure.</p><div class="hero-actions"><button class="btn primary" id="copyIpHero">⛏ Copy Server Address</button><a class="btn" href="#downloads">Browse Downloads ↓</a></div></section>
 <div class="section-title"><h2>Community overview</h2><span class="sub" id="lastUpdated">Status not checked yet</span></div>
 <section class="grid">
-<div class="card span-8"><div class="card-head"><h3>Java server status</h3><span class="pill"><span class="dot" id="statusDot"></span><span id="statusPill">Checking configuration</span></span></div><div class="status-main"><div class="status-icon">🟩</div><div><strong id="statusTitle">Not checked</strong><div class="sub" id="serverAddress">Configure server host in Vercel environment variables</div></div></div><div class="stats"><div class="stat"><span>Players online</span><strong id="playersOnline">—</strong></div><div class="stat"><span>Player capacity</span><strong id="playersMax">—</strong></div></div><div class="notice" id="statusNote">Live data will appear here after you configure JAVA_SERVER_HOST and deploy the API. No sample status or player counts are shown.</div><div style="margin-top:14px"><button class="btn" id="refreshStatus">↻ Refresh status</button></div></div>
-<div class="card span-4"><div class="card-head"><h3>Community links</h3><span class="sub">Official links</span></div><div class="field"><label>JAVA SERVER ADDRESS</label><input id="ipDisplay" value="[SET JAVA SERVER HOST]" readonly></div><div class="field"><label>DISCORD INVITE</label><input id="discordDisplay" value="[SET DISCORD INVITE URL]" readonly></div><p class="sub">Set these values in <code>site-config.js</code> before publishing.</p></div>
+<div class="card span-8"><div class="card-head"><h3>Java server status</h3><span class="pill"><span class="dot" id="statusDot"></span><span id="statusPill">Checking configuration</span></span></div><div class="status-main"><div class="status-icon">🟩</div><div><strong id="statusTitle">Not checked</strong><div class="sub" id="serverAddress">Live status via mcstatus.io</div></div></div><div class="stats"><div class="stat"><span>Players online</span><strong id="playersOnline">—</strong></div><div class="stat"><span>Player capacity</span><strong id="playersMax">—</strong></div></div><div class="notice" id="statusNote">Live status is fetched directly from mcstatus.io. No sample status or player counts are shown.</div><div style="margin-top:14px"><button class="btn" id="refreshStatus">↻ Refresh status</button></div></div>
+<div class="card span-4"><div class="card-head"><h3>Community links</h3><span class="sub">Official links</span></div><div class="field"><label>JAVA SERVER ADDRESS</label><input id="ipDisplay" value="[SET JAVA SERVER HOST]" readonly></div><div class="field"><label>DISCORD INVITE</label><input id="discordDisplay" value="[SET DISCORD INVITE URL]" readonly></div><p class="sub">Set public links in <code>site-config.js</code> before publishing.</p></div>
 <div class="card span-6"><div class="card-head"><h3>Latest announcements</h3><span class="pill">Community news</span></div><div id="announcements"><p class="muted">No announcements have been configured yet. Staff can add a local preview below or connect a shared database for a live community feed.</p></div></div>
 <div class="card span-6" id="downloads"><div class="card-head"><h3>Modpack & downloads</h3><span class="pill">Java Edition</span></div><div class="download-card"><div class="download-icon">📦</div><div><h4 id="packName">Forks Land Modpack</h4><p id="packDescription">Add your approved modpack download link in site-config.js.</p><a class="btn primary" id="packLink" href="#" target="_blank" rel="noopener">Download modpack ↗</a></div></div><div class="notice">Only download modpacks from a source trusted by the Forks Land staff team.</div></div>
-<div class="card span-6"><div class="card-head"><h3>Meet the staff</h3><span class="sub">Community team</span></div><div id="staffList"><p class="muted">Staff names and roles are placeholders. Add the approved team in site-config.js.</p></div></div>
+<div class="card span-6"><div class="card-head"><h3>Meet the staff</h3><span class="sub">Community team</span></div><div id="staffList"><p class="muted">Forks Land community team.</p></div></div>
 <div class="card span-6"><div class="card-head"><h3>Quick guide</h3><span class="pill">New players</span></div><div class="announcement"><h4>01 · Get Minecraft Java Edition</h4><p>Make sure Minecraft Java Edition is installed and updated to the version supported by the server.</p></div><div class="announcement"><h4>02 · Add the server</h4><p>Open Multiplayer → Add Server, then paste the Java address shown above.</p></div><div class="announcement"><h4>03 · Join the community</h4><p>Use the Discord link for official news, help, and community updates.</p></div></div>
 <div class="card span-12"><div class="card-head"><div><h3>Staff administration</h3><div class="sub">Announcement editor preview</div></div><button class="btn" id="toggleAdmin">Open staff panel</button></div><div class="notice">Prototype mode: changes made here are saved only in this browser using local storage. This is not secure staff authentication and does not publish announcements to other visitors. Connect a database and real staff login before using this for production administration.</div><div class="admin" id="adminPanel"><div class="admin-grid"><div><div class="field"><label>Announcement title</label><input id="announceTitle" placeholder="e.g. Weekend build event"></div><div class="field"><label>Announcement message</label><textarea id="announceBody" placeholder="Write the community update..."></textarea></div><div class="admin-actions"><button class="btn primary" id="publishAnnouncement">Save local announcement</button><button class="btn" id="clearAnnouncements">Clear local announcements</button></div></div><div><div class="field"><label>Staff display name</label><input id="staffName" placeholder="Staff member name"></div><div class="field"><label>Staff role</label><input id="staffRole" placeholder="Owner, Admin, Moderator..."></div><div class="admin-actions"><button class="btn" id="addStaff">Add staff preview</button><button class="btn" id="resetStaff">Reset staff preview</button></div><p class="sub">Staff preview entries are also local to this browser. Configure production access controls before connecting any real administrative actions.</p></div></div></div></div>
 </section><footer class="footer">© <span id="year"></span> Forks Land · Built for the community, under the trees. <span id="configState"></span></footer></div>
 <script src="site-config.js"></script><script>
-const defaults={serverHost:"[SET JAVA SERVER HOST]",discordInvite:"[SET DISCORD INVITE URL]",modpackName:"Forks Land Modpack",modpackDescription:"Add your approved modpack download link in site-config.js.",modpackUrl:"",staff:[{name:"[STAFF NAME]",role:"[STAFF ROLE]"}]};
+const defaults={serverHost:"forksland.joinmc.world",discordInvite:"[SET DISCORD INVITE URL]",modpackName:"Forks Land Modpack",modpackDescription:"Add your approved modpack download link in site-config.js.",modpackUrl:"",staff:[{name:"[STAFF NAME]",role:"[STAFF ROLE]"}]};
 const cfg=Object.assign({},defaults,window.FORKS_LAND_CONFIG||{});
 const $=id=>document.getElementById(id);
 $("year").textContent=new Date().getFullYear();
@@ -61,7 +61,7 @@ $("ipDisplay").value=cfg.serverHost;$("serverAddress").textContent=cfg.serverHos
 $("discordDisplay").value=cfg.discordInvite;$("discordLink").href=validUrl(cfg.discordInvite)?cfg.discordInvite:"#";
 $("packName").textContent=cfg.modpackName;$("packDescription").textContent=cfg.modpackDescription;
 if(validUrl(cfg.modpackUrl)){$("packLink").href=cfg.modpackUrl;$("packLink").classList.remove("hidden")}else{$("packLink").href="#";$("packLink").addEventListener("click",e=>{e.preventDefault();alert("Modpack link is not configured yet. Add modpackUrl in site-config.js.")})}
-$("configState").textContent=cfg.serverHost.startsWith("[")?" · Configuration required":"";
+$("configState").textContent=cfg.serverHost.startsWith("[")?" · Configuration required":" · Hosted on GitHub Pages";
 function validUrl(v){try{return ["https:","http:"].includes(new URL(v).protocol)}catch{return false}}
 async function copyIp(){if(!cfg.serverHost||cfg.serverHost.startsWith("[")){alert("Set serverHost in site-config.js first.");return}try{await navigator.clipboard.writeText(cfg.serverHost);$("copyIp").textContent="✓ Copied";$("copyIpHero").textContent="✓ Address copied";setTimeout(()=>{$("copyIp").textContent="⧉ Copy Java IP";$("copyIpHero").textContent="⛏ Copy Server Address"},1600)}catch{prompt("Copy the Java server address:",cfg.serverHost)}}
 $("copyIp").onclick=copyIp;$("copyIpHero").onclick=copyIp;
@@ -75,6 +75,45 @@ $("publishAnnouncement").onclick=()=>{const title=$("announceTitle").value.trim(
 $("clearAnnouncements").onclick=()=>{if(confirm("Clear local preview announcements in this browser?")){announcements=[];localStorage.removeItem("fl_announcements_preview");renderAnnouncements()}};
 $("addStaff").onclick=()=>{const name=$("staffName").value.trim(),role=$("staffRole").value.trim();if(!name||!role){alert("Enter both a staff name and role.");return}staff.push({name,role});localStorage.setItem("fl_staff_preview",JSON.stringify(staff));renderStaff();$("staffName").value="";$("staffRole").value=""};
 $("resetStaff").onclick=()=>{staff=cfg.staff;localStorage.removeItem("fl_staff_preview");renderStaff()};
-async function refreshStatus(){const dot=$("statusDot");dot.className="dot";$("statusPill").textContent="Checking";$("statusTitle").textContent="Checking server…";$("statusNote").textContent="Requesting a live status response from the configured server endpoint.";try{const res=await fetch("/api/status",{headers:{"Accept":"application/json"},cache:"no-store"});const contentType=res.headers.get("content-type")||"";if(!contentType.toLowerCase().includes("application/json")){const preview=(await res.text()).slice(0,120).replace(/\\s+/g," ").trim();throw new Error("The /api/status route returned HTML instead of JSON (HTTP "+res.status+"). In Vercel, check that Root Directory points to the repository root and that api/status.js is included in the deployed source. Response starts: "+preview)}const data=await res.json();if(!res.ok)throw new Error(data.error||"Status endpoint unavailable");if(!data.configured){$("statusTitle").textContent="Not configured";$("statusPill").textContent="Setup required";$("statusNote").textContent=data.message||"Configure JAVA_SERVER_HOST in your deployment environment.";return}if(data.online){dot.className="dot good";$("statusPill").textContent="Online";$("statusTitle").textContent="Server online";$("playersOnline").textContent=Number.isFinite(data.playersOnline)?data.playersOnline:"—";$("playersMax").textContent=Number.isFinite(data.playersMax)?data.playersMax:"—";$("statusNote").textContent="Live status received from the server status provider."}else{dot.className="dot bad";$("statusPill").textContent="Offline";$("statusTitle").textContent="Server offline";$("playersOnline").textContent="0";$("playersMax").textContent=Number.isFinite(data.playersMax)?data.playersMax:"—";$("statusNote").textContent="The status provider reports that the server is offline. If this seems wrong, check the host and port configuration."}}catch(e){$("statusTitle").textContent="Status unavailable";$("statusPill").textContent="No live data";$("playersOnline").textContent="—";$("playersMax").textContent="—";$("statusNote").textContent="Could not retrieve live status: "+e.message+". Deploy to Vercel and configure the status API; this dashboard will not substitute sample data."}finally{$("lastUpdated").textContent="Checked "+new Date().toLocaleTimeString()}}
+async function refreshStatus(){
+  const dot=$("statusDot");
+  dot.className="dot";
+  $("statusPill").textContent="Checking";
+  $("statusTitle").textContent="Checking server…";
+  $("statusNote").textContent="Requesting live status from mcstatus.io.";
+  $("playersOnline").textContent="—";
+  $("playersMax").textContent="—";
+  try {
+    if(!cfg.serverHost || cfg.serverHost.startsWith("[")) throw new Error("Set serverHost in site-config.js.");
+    const endpoint="https://api.mcstatus.io/v2/status/java/"+encodeURIComponent(cfg.serverHost);
+    const res=await fetch(endpoint,{headers:{"Accept":"application/json"},cache:"no-store"});
+    if(!res.ok) throw new Error("Status provider returned HTTP "+res.status);
+    const data=await res.json();
+    if(typeof data.online!=="boolean") throw new Error("Status provider response was incomplete");
+    if(data.online){
+      dot.className="dot good";
+      $("statusPill").textContent="Online";
+      $("statusTitle").textContent="Server online";
+      $("playersOnline").textContent=Number.isFinite(data.players?.online)?data.players.online:"—";
+      $("playersMax").textContent=Number.isFinite(data.players?.max)?data.players.max:"—";
+      $("statusNote").textContent="Live status received from mcstatus.io.";
+    } else {
+      dot.className="dot bad";
+      $("statusPill").textContent="Offline";
+      $("statusTitle").textContent="Server offline";
+      $("playersOnline").textContent="0";
+      $("playersMax").textContent=Number.isFinite(data.players?.max)?data.players.max:"—";
+      $("statusNote").textContent="mcstatus.io reports that the server is offline. If this seems wrong, check the server address.";
+    }
+  } catch(e) {
+    $("statusTitle").textContent="Status unavailable";
+    $("statusPill").textContent="No live data";
+    $("playersOnline").textContent="—";
+    $("playersMax").textContent="—";
+    $("statusNote").textContent="Could not retrieve live status: "+e.message+". The page is static on GitHub Pages and does not use a server-side API.";
+  } finally {
+    $("lastUpdated").textContent="Checked "+new Date().toLocaleTimeString();
+  }
+}
 $("refreshStatus").onclick=refreshStatus;refreshStatus();
 </script></body></html>
