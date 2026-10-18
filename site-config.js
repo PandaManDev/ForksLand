@@ -1,12 +1,13 @@
 // Public display configuration for the Forks Land dashboard.
 // Replace placeholders before deployment. Do not put passwords or API secrets here.
 window.FORKS_LAND_CONFIG = {
-  serverHost: "[SET JAVA SERVER HOST]",
+  serverHost: "forksland.joinmc.world",
   discordInvite: "[SET DISCORD INVITE URL]",
   modpackName: "Forks Land Modpack",
-  modpackDescription: "Add your approved modpack download link here.",
-  modpackUrl: "[SET MODPACK DOWNLOAD URL]",
+  modpackDescription: "Download link coming soon. Check the official Discord for updates.",
+  modpackUrl: "",
   staff: [
-    { name: "[STAFF NAME]", role: "[STAFF ROLE]" }
+    { name: "f0rkyy", role: "Owner" },
+    { name: "PandaManOfficial", role: "Co-Owner" }
   ]
 };
