@@ -2,7 +2,7 @@
 // Replace placeholders before deployment. Do not put passwords or API secrets here.
 window.FORKS_LAND_CONFIG = {
   serverHost: "forksland.joinmc.world",
-  discordInvite: "[SET DISCORD INVITE URL]",
+  discordInvite: "https://dc.gg/fork-lands",
   modpackName: "Forks Land Modpack",
   modpackDescription: "Download link coming soon. Check the official Discord for updates.",
   modpackUrl: "",
