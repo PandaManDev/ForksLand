@@ -7,6 +7,7 @@ window.FORKS_LAND_CONFIG = {
   modpackDescription: "Add your approved modpack download link here.",
   modpackUrl: "[SET MODPACK DOWNLOAD URL]",
   staff: [
-    { name: "[STAFF NAME]", role: "[STAFF ROLE]" }
+    { name: "f0rkyy", role: "Owner" },
+    { name: "PandaManOfficial", role: "Co-Owner" }
   ]
 };
